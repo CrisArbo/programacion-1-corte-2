@@ -1,6 +1,6 @@
 Hola!
 
-Este zip contiene los ejercicios resueltos de operadores logicos. Lo hicimos con un estilo un poco propio: cambiamos nombres y algun orden para que no sea exactamente igual al material original, pero la logica es la misma.
+Este zip contiene los ejercicios resueltos de operadores logicos
 
 Archivos incluidos:
 - nivel1_basico.py      -> ejercicios basicos (and/or/not, comparaciones)
@@ -11,8 +11,8 @@ Archivos incluidos:
 
 Notas:
 - Quitamos tildes y la letra 'n' especial para que abra bien en VS Code en ingles.
-- No somos expertos pero sabemos cositas :P
-- Si quieres que adaptemos algo (mas cambios, otros nombres, o un README mas formal) avisanos.
+
+
 
 Saludos,
 Cristopher y Juan Pablo
