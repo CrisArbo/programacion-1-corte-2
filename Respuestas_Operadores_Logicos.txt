@@ -1,0 +1,85 @@
+OPERADORES LÓGICOS CONFUSOS - RESPUESTAS Y EXPLICACIONES
+
+==================================================
+Problema 1: Confusión entre 'and' y 'or'
+==================================================
+- 'and' devuelve True solo si ambas condiciones son verdaderas.
+- 'or' devuelve True si al menos una condición es verdadera.
+- Se usan 'and' para condiciones que deben cumplirse juntas, y 'or' si basta con una.
+
+==================================================
+Problema 2: Precedencia de operadores
+==================================================
+- En Python, se pueden encadenar comparaciones como 3 < x < 10.
+- x > 3 and x < 10 es equivalente a 3 < x < 10.
+- En x < y < x, se evalúa (x < y) and (y < x), lo cual siempre es False.
+- Las comparaciones encadenadas se evalúan de izquierda a derecha.
+
+==================================================
+Problema 3: Confusión con 'not'
+==================================================
+- 'not a and b' niega solo 'a'.
+- 'not (a and b)' niega el resultado completo de (a and b).
+- Los paréntesis cambian qué parte se niega.
+
+==================================================
+Problema 4: '==' vs 'is'
+==================================================
+- '==' compara valores.
+- 'is' compara identidad (si son el mismo objeto en memoria).
+- lista1 == lista2 -> True porque tienen el mismo contenido.
+- lista1 is lista2 -> False porque son objetos distintos.
+- Para números pequeños Python reutiliza objetos, por eso a is b puede ser True.
+
+==================================================
+Problema 5: Evaluación de cortocircuito
+==================================================
+- En 'and', si la primera condición es False, no evalúa la segunda.
+- En 'or', si la primera condición es True, no evalúa la segunda.
+- Esto se llama “evaluación de cortocircuito”.
+
+==================================================
+Problema 6: Operadores 'in' y 'not in'
+==================================================
+- 'in' comprueba si un elemento está en una lista o cadena.
+- Es sensible a mayúsculas/minúsculas: 'P' in "Python" es True, 'p' in "Python" es False.
+
+==================================================
+Problema 7: Valores falsy
+==================================================
+- Los siguientes valores se evalúan como False: 0, 0.0, "", [], {}, None, False.
+- Pero valores como [''], {None: None}, o " " se evalúan como True.
+- Un valor vacío es falsy, pero un contenedor con algo dentro es truthy.
+
+==================================================
+Problema 8: Expresiones complejas sin paréntesis
+==================================================
+- 'and' se evalúa antes que 'or'.
+- Por eso, p and q or r equivale a (p and q) or r.
+- Los paréntesis pueden cambiar el resultado lógico.
+- Es mejor usarlos para dejar clara la intención.
+
+==================================================
+Problema 9: Validación de datos
+==================================================
+- 3 <= len(username) <= 15 es equivalente a
+  len(username) >= 3 and len(username) <= 15.
+- La comparación encadenada es más limpia y legible.
+
+==================================================
+Problema 10: Lógica compleja de autorización
+==================================================
+- Se combinan operadores lógicos para verificar condiciones múltiples.
+- Ejemplo: usuario autenticado y con suscripción premium o administrador.
+- Siempre usar paréntesis para evitar errores de precedencia.
+
+==================================================
+CONCEPTOS CLAVE
+==================================================
+- 'and' / 'or' / 'not': Combinan condiciones con distinta exigencia.
+- '==' vs 'is': Compara valores vs identidad.
+- Cortocircuito: Evita ejecuciones innecesarias.
+- 'in' / 'not in': Sensibles a mayúsculas/minúsculas.
+- Falsy values: 0, "", [], {}, None, False.
+- Paréntesis: Cambian el orden lógico.
+- Comparaciones encadenadas: Más legibles y equivalentes a varios 'and'.
