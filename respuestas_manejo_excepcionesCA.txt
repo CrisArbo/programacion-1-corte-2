@@ -63,3 +63,104 @@ PROBLEMA 7: Excepciones en bucles
    Así al final tengo un resumen claro de lo que funcionó y lo que no.
 3. Si todos los elementos fallan, lo correcto sería notificarlo y no devolver resultados vacíos o incorrectos. 
    De esa forma evito confusiones y mantengo la integridad de los datos procesados.
+
+
+
+EJERCICIOS PARA ESTUDIANTES - PARTE 2
+
+------------------------------------------------------------
+1️⃣ PROBLEMA 1 - Except desnudo
+Corrección: Se especifican los tipos de error (ZeroDivisionError, TypeError) en lugar de usar except general.
+
+def calcular_promedio(numeros):
+    try:
+        total = sum(numeros)
+        promedio = total / len(numeros)
+        return promedio
+    except ZeroDivisionError:
+        print("Error: No se puede dividir entre cero. La lista está vacía.")
+        return None
+    except TypeError:
+        print("Error: Todos los elementos deben ser numéricos.")
+        return None
+
+
+------------------------------------------------------------
+2️⃣ PROBLEMA 2 - Retroalimentación al usuario
+Corrección: Se agregan mensajes informativos para guiar al usuario según el resultado o error del proceso.
+
+def convertir_a_entero(valor):
+    try:
+        numero = int(valor)
+        print(f"Conversión exitosa: {numero}")
+        return numero
+    except ValueError:
+        print("Error: Debes ingresar un número válido.")
+        return None
+
+
+------------------------------------------------------------
+3️⃣ PROBLEMA 3 - Debugging con mensajes
+Corrección: Se insertan print() estratégicos para depurar y mostrar el estado interno del programa.
+
+def sumar_lista(lista):
+    total = 0
+    for i, n in enumerate(lista):
+        print(f"[DEBUG] Iteración {i}: total actual = {total}, sumando {n}")
+        total += n
+    print(f"[DEBUG] Total final = {total}")
+    return total
+
+
+------------------------------------------------------------
+4️⃣ PROBLEMA 4 - Validación de entradas
+Corrección: Se verifica que los datos ingresados sean del tipo correcto antes de operar con ellos.
+
+def obtener_promedio_seguro(lista):
+    if not lista or not all(isinstance(x, (int, float)) for x in lista):
+        print("Error: la lista está vacía o contiene datos no numéricos.")
+        return None
+    promedio = sum(lista) / len(lista)
+    print(f"Promedio calculado correctamente: {promedio}")
+    return promedio
+
+
+------------------------------------------------------------
+5️⃣ PROBLEMA 5 - Manejo de listas
+Corrección: Se evita modificar la lista mientras se itera sobre ella; se crea una nueva lista filtrada.
+
+def filtrar_impares(lista):
+    nueva_lista = [n for n in lista if n % 2 != 0]
+    print(f"Lista original: {lista}")
+    print(f"Lista filtrada (solo impares): {nueva_lista}")
+    return nueva_lista
+
+
+------------------------------------------------------------
+6️⃣ PROBLEMA 6 - División segura
+Corrección: Se evita la división entre cero usando control de flujo y mensajes de advertencia.
+
+def dividir_seguro(a, b):
+    if b == 0:
+        print("Error: no se puede dividir entre cero.")
+        return None
+    resultado = a / b
+    print(f"Resultado de la división: {resultado}")
+    return resultado
+
+
+------------------------------------------------------------
+7️⃣ PROBLEMA 7 - Uso correcto de finally
+Corrección: Se asegura que el bloque finally siempre se ejecute, incluso si hay un error o return.
+
+def abrir_archivo(nombre):
+    try:
+        archivo = open(nombre, "r", encoding="utf-8")
+        contenido = archivo.read()
+        print("Archivo leído correctamente.")
+        return contenido
+    except FileNotFoundError:
+        print("Error: el archivo no existe.")
+        return None
+    finally:
+        print("Finalizando proceso de lectura (bloque finally ejecutado).")
