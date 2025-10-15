@@ -1,4 +1,4 @@
-MANEJO DE EXCEPCIONES - RESPUESTAS EXPLICADAS EN PRIMERA PERSONA
+MANEJO DE EXCEPCIONES
 
 PROBLEMA 1: Except desnudo
 1. Si uso un except sin especificar el tipo de error, nunca sabría exactamente qué salió mal. 
