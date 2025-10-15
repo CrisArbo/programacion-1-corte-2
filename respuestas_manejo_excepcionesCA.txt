@@ -1,0 +1,65 @@
+MANEJO DE EXCEPCIONES - RESPUESTAS EXPLICADAS EN PRIMERA PERSONA
+
+PROBLEMA 1: Except desnudo
+1. Si uso un except sin especificar el tipo de error, nunca sabría exactamente qué salió mal. 
+   Puede ser un error de división, de tipeo, o incluso que el usuario interrumpió el programa con Ctrl+C. 
+   Todo se ve igual, y eso hace que no pueda entender el origen del problema.
+2. Si por ejemplo me equivoco escribiendo el nombre de una variable, ese error se escondería completamente. 
+   El programa solo diría “Ocurrió un error” y seguiría, pero yo no tendría idea de qué fue exactamente lo que falló.
+3. Esto hace que depurar sea mucho más difícil, porque al no tener información sobre el error, me toca adivinar. 
+   En lugar de corregir el problema fácilmente, paso más tiempo intentando reproducirlo o buscando en vano la causa.
+
+PROBLEMA 2: Capturar demasiado ampliamente
+1. En este tipo de casos podrían pasar muchos errores distintos: 
+   que el archivo no exista (FileNotFoundError), que los datos no sean números (ValueError), o que la lista esté vacía (ZeroDivisionError). 
+   Todos son diferentes, pero el código los trata igual.
+2. No todos los errores deberían manejarse de la misma forma. 
+   Si el archivo no existe, tal vez deba avisar al usuario; pero si los datos están mal, tal vez deba mostrar un mensaje diferente. 
+   Capturarlos a todos igual solo me confunde.
+3. Al hacerlo tan amplio, pierdo información valiosa sobre el tipo de error que ocurrió. 
+   Así no sé si debo corregir mi código, validar mejor los datos o revisar un archivo perdido.
+
+PROBLEMA 3: Ignorar errores silenciosamente
+1. Si un error ocurre y simplemente lo ignoro, el programa puede seguir como si nada. 
+   Pero en realidad, puede que el guardado haya fallado y yo ni siquiera me entere. 
+   Eso puede ser peligroso si estoy trabajando con datos importantes.
+2. Lo ideal sería que el programa me avise que algo salió mal o que guarde un registro del error para poder revisarlo después. 
+   Así podría saber si realmente se guardó la información o no.
+3. Este tipo de error sí debería manejarse, porque afecta directamente al usuario. 
+   No saber que algo falló puede llevar a perder datos sin darse cuenta.
+
+PROBLEMA 4: Confusión con else y finally
+1. El bloque “else” solo se ejecuta cuando no ocurre ninguna excepción dentro del “try”, 
+   mientras que “finally” se ejecuta siempre, haya o no error. 
+   Es importante tenerlo claro para no poner el código en el lugar equivocado.
+2. Yo usaría “else” para poner el código que solo debe correr si todo salió bien, 
+   y “finally” para liberar recursos o cerrar archivos, sin importar si hubo error o no.
+3. Incluso si el bloque “try” tiene un “return”, el “finally” se ejecutará de todas formas antes de que el programa salga. 
+   Por eso es útil para asegurarse de que algo se ejecute siempre, como limpiar memoria o cerrar conexiones.
+
+PROBLEMA 5: Uso incorrecto de raise
+1. No es buena idea usar excepciones genéricas como “Exception”. 
+   Es mejor usar tipos más específicos como “ValueError” o “TypeError”, o incluso crear una excepción personalizada si lo necesito. 
+   Así el error tiene más sentido y se entiende mejor.
+2. El mensaje que acompaña la excepción debería decir claramente qué salió mal. 
+   Por ejemplo, en vez de “Error”, debería decir “No se puede dividir por cero” o “Edad negativa no permitida”. 
+   Así sabré de inmediato qué pasó.
+3. Si lanzo excepciones adecuadas y con mensajes claros, le facilito la vida al que use mi función. 
+   Sabrán qué tipo de error manejar y cómo reaccionar ante él.
+
+PROBLEMA 6: No re-lanzar apropiadamente
+1. Hay casos donde sí tiene sentido capturar y manejar el error directamente, 
+   como cuando puedo solucionarlo dentro de la misma función sin afectar al resto del programa.
+2. Pero hay otros casos donde debo registrar el error (por ejemplo, mostrarlo o guardarlo en un log) 
+   y luego volver a lanzarlo para que otro nivel del programa lo maneje correctamente. 
+   Así no oculto información importante.
+3. Si el error no se puede resolver localmente, lo mejor es no capturarlo en absoluto. 
+   Dejar que suba al nivel superior permite que el programa tome decisiones adecuadas sobre qué hacer.
+
+PROBLEMA 7: Excepciones en bucles
+1. Si un error ocurre dentro de un bucle, no necesariamente debería detener todo el proceso. 
+   A veces es mejor saltar el elemento que falló y continuar con los demás, especialmente si se trata de muchos datos.
+2. Para eso, puedo registrar qué elementos fallaron y cuáles se procesaron correctamente. 
+   Así al final tengo un resumen claro de lo que funcionó y lo que no.
+3. Si todos los elementos fallan, lo correcto sería notificarlo y no devolver resultados vacíos o incorrectos. 
+   De esa forma evito confusiones y mantengo la integridad de los datos procesados.
