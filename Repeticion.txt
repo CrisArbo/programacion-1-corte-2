@@ -1,0 +1,321 @@
+#!/usr/bin/env python3
+"""
+ESTRUCTURAS CONDICIONALES CONFUSAS - Versión Interactiva
+
+Este código demuestra errores comunes y confusiones con estructuras condicionales en Python.
+Los estudiantes pueden interactuar con cada ejemplo, predecir resultados y aprender activamente.
+"""
+
+import os
+import time
+
+
+def limpiar_pantalla():
+    """Limpia la pantalla de la terminal."""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def esperar_enter(mensaje="Presiona Enter para continuar..."):
+    """Espera a que el usuario presione Enter."""
+    input(f"\n{mensaje}")
+
+
+def mostrar_titulo(texto):
+    """Muestra un título formateado."""
+    print("\n" + "=" * 70)
+    print(texto.center(70))
+    print("=" * 70 + "\n")
+
+
+def mostrar_seccion(texto):
+    """Muestra un encabezado de sección."""
+    print("\n" + "-" * 50)
+    print(texto)
+    print("-" * 50)
+
+
+# ====================== INICIO DEL PROGRAMA ======================
+limpiar_pantalla()
+mostrar_titulo("ESTRUCTURAS CONDICIONALES EN PYTHON - Sesión Interactiva")
+
+print("¡Bienvenidos a la exploración interactiva de estructuras condicionales!")
+print("Iremos descubriendo conceptos a través de ejemplos confusos.")
+print("Participa activamente respondiendo a las preguntas y predicciones.")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 1: INDENTACIÓN EN CONDICIONALES
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 1: INDENTACIÓN EN CONDICIONALES")
+
+mostrar_seccion("📝 Analiza este código:")
+print("""
+edad = 17
+if edad < 18:
+    print("Eres menor de edad")
+    print("No puedes entrar")
+print("Verificación completada")
+""")
+
+mostrar_seccion("🤔 PREDICCIÓN:")
+print("Discute con tu compañero: ¿Qué líneas se ejecutarán si edad = 17?")
+esperar_enter("Cuando tengas tu predicción, presiona Enter para ver el resultado...")
+
+edad = 17
+print("\n✅ RESULTADO REAL:")
+if edad < 18:
+    print("Eres menor de edad")
+    print("No puedes entrar")
+print("Verificación completada")
+
+mostrar_seccion("❓ REFLEXIÓN:")
+print("¿Coincidió con tu predicción?")
+print("¿Qué determina si una línea pertenece al bloque 'if'?")
+esperar_enter()
+
+mostrar_seccion("🧪 EXPERIMENTO:")
+print("Ahora probemos con edad = 19")
+esperar_enter("Presiona Enter para ejecutar con edad = 19...")
+
+edad = 19
+print("\n✅ RESULTADO CON edad = 19:")
+if edad < 18:
+    print("Eres menor de edad")
+    print("No puedes entrar")
+print("Verificación completada")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 2: ASIGNACIÓN VS COMPARACIÓN
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 2: ASIGNACIÓN VS COMPARACIÓN")
+
+mostrar_seccion("📝 Analiza este código:")
+print("""
+x = 5
+if x = 10:
+    print("x es igual a 10")
+else:
+    print("x no es igual a 10")
+""")
+
+mostrar_seccion("🤔 PREDICCIÓN:")
+print("¿Este código funcionará? ¿Qué resultado tendría?")
+esperar_enter("Cuando tengas tu predicción, presiona Enter para intentar ejecutar...")
+
+print("\n✅ RESULTADO:")
+print("SyntaxError: invalid syntax")
+print("Python no permite usar '=' (asignación) en una condición.")
+print("El operador de comparación correcto es '==' (igualdad).")
+
+mostrar_seccion("❓ REFLEXIÓN:")
+print("¿Cuál es la diferencia entre '=' y '==' en Python?")
+esperar_enter("Presiona Enter para ver el código corregido...")
+
+print("\n✅ CÓDIGO CORREGIDO:")
+x = 5
+if x == 10:
+    print("x es igual a 10")
+else:
+    print("x no es igual a 10")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 3: VALORES COMO CONDICIONES
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 3: VALORES COMO CONDICIONES")
+
+mostrar_seccion("📝 Analiza este código:")
+print("""
+valores = [0, 1, "", "texto", [], [1, 2], None, True, False]
+
+for valor in valores:
+    if valor:
+        print(f"{valor} se evalúa como True")
+    else:
+        print(f"{valor} se evalúa como False")
+""")
+
+mostrar_seccion("🤔 PREDICCIÓN:")
+print("¿Cuáles valores crees que serán True o False?")
+esperar_enter("Presiona Enter para ver los resultados...")
+
+print("\n✅ RESULTADO REAL:")
+valores = [0, 1, "", "texto", [], [1, 2], None, True, False]
+
+for valor in valores:
+    if valor:
+        print(f"{repr(valor)} se evalúa como True")
+    else:
+        print(f"{repr(valor)} se evalúa como False")
+
+mostrar_seccion("❓ REFLEXIÓN:")
+print("Los valores falsos ('falsy') son: 0, '', [], None y False.")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 4: ANIDACIÓN DE CONDICIONALES
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 4: ANIDACIÓN DE CONDICIONALES")
+
+mostrar_seccion("📝 Analiza este código confuso:")
+print("""
+edad = 16
+tiene_permiso = True
+
+if edad < 18:
+    if tiene_permiso:
+        print("Es menor de edad pero tiene permiso")
+    else:
+        print("Es menor de edad y no tiene permiso")
+else:
+    print("Es mayor de edad")
+    if not tiene_permiso:
+        print("Pero no tiene permiso")
+""")
+
+mostrar_seccion("🤔 PREDICCIÓN:")
+print("Con edad = 16 y tiene_permiso = True, ¿qué mensajes se mostrarán?")
+esperar_enter("Presiona Enter para ver el resultado...")
+
+edad = 16
+tiene_permiso = True
+if edad < 18:
+    if tiene_permiso:
+        print("Es menor de edad pero tiene permiso")
+    else:
+        print("Es menor de edad y no tiene permiso")
+else:
+    print("Es mayor de edad")
+    if not tiene_permiso:
+        print("Pero no tiene permiso")
+
+mostrar_seccion("Ahora probemos con tiene_permiso = False")
+esperar_enter("Presiona Enter para ejecutar...")
+
+edad = 16
+tiene_permiso = False
+if edad < 18 and tiene_permiso:
+    print("Es menor de edad pero tiene permiso")
+elif edad < 18:
+    print("Es menor de edad y no tiene permiso")
+elif not tiene_permiso:
+    print("Es mayor de edad pero no tiene permiso")
+else:
+    print("Es mayor de edad y tiene permiso")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 5: ORDEN DE CONDICIONES
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 5: ORDEN DE CONDICIONES")
+
+mostrar_seccion("📝 Analiza este código confuso:")
+print("""
+nota = 85
+
+if nota >= 60:
+    print("Aprobado")
+elif nota >= 90:
+    print("Sobresaliente")
+elif nota >= 70:
+    print("Notable")
+else:
+    print("Suspenso")
+""")
+
+mostrar_seccion("🤔 PREDICCIÓN:")
+print("Con nota = 85, ¿qué mensaje se mostrará?")
+esperar_enter("Presiona Enter para ver el resultado...")
+
+nota = 85
+if nota >= 60:
+    print("Aprobado")
+elif nota >= 90:
+    print("Sobresaliente")
+elif nota >= 70:
+    print("Notable")
+else:
+    print("Suspenso")
+
+mostrar_seccion("CÓDIGO CORREGIDO:")
+if nota >= 90:
+    print("Sobresaliente")
+elif nota >= 70:
+    print("Notable")
+elif nota >= 60:
+    print("Aprobado")
+else:
+    print("Suspenso")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 6: OPERADOR TERNARIO
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 6: OPERADOR TERNARIO")
+
+edad = 20
+estado = "Mayor de edad" if edad >= 18 else "Menor de edad"
+nivel = "Niño" if edad < 13 else "Adolescente" if edad < 18 else "Adulto"
+
+print(f"estado: {estado}")
+print(f"nivel: {nivel}")
+
+mostrar_seccion("❓ REFLEXIÓN:")
+print("El ternario múltiple es válido, pero poco legible.")
+print("Se recomienda usar if-elif-else cuando hay más de dos condiciones.")
+esperar_enter()
+
+# ===================================================================
+# EJERCICIO 7: IS VS ==
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 7: OPERADORES IS VS ==")
+
+a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+
+print(f"a == b: {a == b}")
+print(f"a is b: {a is b}")
+print(f"a == c: {a == c}")
+print(f"a is c: {a is c}")
+
+mostrar_seccion("EJEMPLO CON None:")
+x = None
+print(f"x is None: {x is None}")
+print(f"x == None: {x == None}")
+print("👉 Aunque ambos funcionan, 'is None' es la forma pythónica correcta.")
+esperar_enter()
+
+# ===================================================================
+# CIERRE
+# ===================================================================
+limpiar_pantalla()
+mostrar_titulo("CONCLUSIÓN DE LA EXPLORACIÓN INTERACTIVA")
+
+print("""
+Hemos explorado los errores y confusiones más comunes sobre condicionales en Python:
+
+1. Indentación y bloques
+2. '=' vs '=='
+3. Valores truthy/falsy
+4. Condicionales anidados y operadores lógicos
+5. Orden de condiciones
+6. Operador ternario
+7. Igualdad (==) vs identidad (is)
+
+¡Gracias por participar en la sesión interactiva!
+Continúa con los ejercicios prácticos para aplicar lo aprendido.
+""")
+esperar_enter("Presiona Enter para finalizar...")
+
+limpiar_pantalla()
+print("✅ ¡Exploración completada!")
+print("Sigue practicando para dominar las estructuras condicionales.")
