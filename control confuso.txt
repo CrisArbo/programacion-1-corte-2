@@ -1,0 +1,332 @@
+#!/usr/bin/env python3
+"""
+ESTRUCTURAS DE CONTROL CONFUSAS - Version Interactiva
+Este codigo demuestra errores comunes y confusiones con estructuras de control en Python.
+Los estudiantes pueden interactuar con cada ejemplo, predecir resultados y aprender activamente.
+"""
+import os
+import time
+
+def limpiar_pantalla():
+    """Limpia la pantalla de la terminal"""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def esperar_enter(mensaje="Presiona Enter para continuar..."):
+    """Espera a que el usuario presione Enter"""
+    input(f"\n{mensaje}")
+
+def mostrar_titulo(texto):
+    """Muestra un titulo formateado"""
+    print("\n" + "=" * 70)
+    print(texto.center(70))
+    print("=" * 70 + "\n")
+
+def mostrar_seccion(texto):
+    """Muestra un encabezado de seccion"""
+    print("\n" + "-" * 50)
+    print(texto)
+    print("-" * 50)
+
+# Inicio del programa interactivo
+limpiar_pantalla()
+mostrar_titulo("ESTRUCTURAS DE CONTROL EN PYTHON - Sesion Interactiva")
+
+print("Bienvenidos a la exploracion interactiva de estructuras de control!")
+print("Iremos descubriendo conceptos a traves de ejemplos confusos.")
+print("Participa activamente respondiendo a las preguntas y predicciones.")
+esperar_enter()
+
+# ===========================================================================
+# Ejercicio 1: Modificacion de una lista mientras se itera
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 1: MODIFICACION DURANTE ITERACION")
+
+mostrar_seccion("Analiza este codigo:")
+print("""
+numeros = [1, 2, 3, 4, 5]
+print(f"Lista original: {numeros}")
+
+# Intento de eliminar numeros pares durante la iteracion
+for numero in numeros:
+    if numero % 2 == 0:  # Si es par
+        numeros.remove(numero)
+
+print(f"Lista despues del bucle: {numeros}")
+""")
+
+mostrar_seccion("PREDICCION:")
+print("Que resultado esperas despues de ejecutar este codigo?")
+print("Crees que todos los numeros pares seran eliminados?")
+esperar_enter("Cuando tengas tu prediccion, presiona Enter para ver el resultado...")
+
+# Ejecutar el codigo
+numeros = [1, 2, 3, 4, 5]
+print(f"\nLista original: {numeros}")
+
+for numero in numeros:
+    if numero % 2 == 0:
+        numeros.remove(numero)
+
+print(f"Lista despues del bucle: {numeros}")
+
+mostrar_seccion("REFLEXION:")
+print("Coincidio con tu prediccion?")
+print("Por que no se eliminaron todos los numeros pares?")
+print("Que sucede cuando modificamos la lista mientras la recorremos?")
+esperar_enter()
+
+mostrar_seccion("EXPERIMENTO:")
+print("Intenta este enfoque alternativo:")
+print("""
+numeros = [1, 2, 3, 4, 5]
+numeros_filtrados = [num for num in numeros if num % 2 != 0]
+print(f"Lista filtrada: {numeros_filtrados}")
+""")
+
+numeros = [1, 2, 3, 4, 5]
+numeros_filtrados = [num for num in numeros if num % 2 != 0]
+print(f"\nResultado correcto: {numeros_filtrados}")
+
+esperar_enter()
+
+# ===========================================================================
+# Ejercicio 2: Confusion con range()
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 2: CONFUSION CON RANGE()")
+
+mostrar_seccion("Analiza este codigo:")
+print("""
+print("Usando range(10):")
+for i in range(10):
+    print(i, end=" ")
+
+print("\\n\\nUsando range(1, 10):")
+for i in range(1, 10):
+    print(i, end=" ")
+""")
+
+mostrar_seccion("PREDICCION:")
+print("Que numeros se imprimiran en cada caso?")
+print("Ambos bucles imprimiran del 1 al 10?")
+esperar_enter("Cuando tengas tu prediccion, presiona Enter para ver el resultado...")
+
+print("\nRESULTADO:")
+print("Usando range(10):")
+for i in range(10):
+    print(i, end=" ")
+
+print("\n\nUsando range(1, 10):")
+for i in range(1, 10):
+    print(i, end=" ")
+
+mostrar_seccion("REFLEXION:")
+print("Cual es la diferencia entre range(10) y range(1, 10)?")
+print("Como funcionan los parametros de range(inicio, fin, paso)?")
+print("Como obtendrias exactamente los numeros del 1 al 10?")
+esperar_enter()
+
+print("\nPara obtener exactamente del 1 al 10:")
+for i in range(1, 11):
+    print(i, end=" ")
+print()
+esperar_enter()
+
+# ===========================================================================
+# Ejercicio 3: Bucle while infinito
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 3: BUCLE WHILE INFINITO")
+
+mostrar_seccion("Analiza este codigo:")
+print("""
+contador = 1
+while contador <= 5:
+    print(f"Contador: {contador}")
+    # Olvidamos incrementar el contador
+""")
+
+mostrar_seccion("PREDICCION:")
+print("Que pasara cuando se ejecute este codigo?")
+print("El bucle terminara en algun momento?")
+esperar_enter("Cuando tengas tu prediccion, presiona Enter para ver el resultado...")
+
+print("\nRESULTADO:")
+print("Este codigo crearia un bucle infinito porque el contador nunca cambia.")
+print("Por seguridad, no lo ejecutaremos realmente.")
+print("El codigo correcto deberia incluir: contador += 1")
+
+mostrar_seccion("REFLEXION:")
+print("Por que es importante actualizar la condicion de un bucle while?")
+print("Que diferencias hay entre bucles for y while?")
+print("En que situaciones es preferible usar un bucle while?")
+esperar_enter()
+
+mostrar_seccion("EXPERIMENTO:")
+print("""
+contador = 1
+while contador <= 5:
+    print(f"Contador: {contador}")
+    contador += 1
+""")
+
+contador = 1
+while contador <= 5:
+    print(f"Contador: {contador}")
+    contador += 1
+esperar_enter()
+
+# ===========================================================================
+# Ejercicio 4: Break vs Continue
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 4: BREAK VS CONTINUE")
+
+mostrar_seccion("Analiza estos dos codigos:")
+print("""
+print("Codigo 1 (usando break):")
+for i in range(1, 10):
+    if i == 5:
+        print(f"Encontre el {i}. Saliendo del bucle.")
+        break
+    print(f"Procesando numero {i}")
+
+print("\\nCodigo 2 (usando continue):")
+for i in range(1, 10):
+    if i == 5:
+        print(f"Encontre el {i}. Saltando a la siguiente iteracion.")
+        continue
+    print(f"Procesando numero {i}")
+""")
+
+mostrar_seccion("PREDICCION:")
+print("Cual sera la diferencia en la salida de ambos codigos?")
+esperar_enter("Cuando tengas tu prediccion, presiona Enter para ver el resultado...")
+
+print("\nRESULTADO:")
+print("Codigo 1 (usando break):")
+for i in range(1, 10):
+    if i == 5:
+        print(f"Encontre el {i}. Saliendo del bucle.")
+        break
+    print(f"Procesando numero {i}")
+
+print("\nCodigo 2 (usando continue):")
+for i in range(1, 10):
+    if i == 5:
+        print(f"Encontre el {i}. Saltando a la siguiente iteracion.")
+        continue
+    print(f"Procesando numero {i}")
+
+mostrar_seccion("REFLEXION:")
+print("Que diferencia hay entre break y continue?")
+esperar_enter()
+
+# ===========================================================================
+# Ejercicio 5: Bucles anidados y break
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 5: BUCLES ANIDADOS Y BREAK")
+
+mostrar_seccion("Analiza este codigo:")
+print("""
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+objetivo = 6
+encontrado = False
+
+for fila in matriz:
+    for elemento in fila:
+        print(f"Verificando: {elemento}")
+        if elemento == objetivo:
+            print(f"Encontrado {objetivo}!")
+            encontrado = True
+            break
+    print("Fin de la fila")
+
+print(f"Busqueda terminada. Encontrado: {encontrado}")
+""")
+
+mostrar_seccion("PREDICCION:")
+print("El break interno saldra de ambos bucles o solo del interno?")
+esperar_enter("Cuando tengas tu prediccion, presiona Enter para ver el resultado...")
+
+print("\nRESULTADO:")
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+objetivo = 6
+encontrado = False
+
+for fila in matriz:
+    for elemento in fila:
+        print(f"Verificando: {elemento}")
+        if elemento == objetivo:
+            print(f"Encontrado {objetivo}!")
+            encontrado = True
+            break
+    print("Fin de la fila")
+
+print(f"Busqueda terminada. Encontrado: {encontrado}")
+esperar_enter()
+
+# ===========================================================================
+# Ejercicio 6: Comprensiones de lista vs bucles tradicionales
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("EJERCICIO 6: COMPRENSIONES VS BUCLES TRADICIONALES")
+
+mostrar_seccion("Analiza estos dos codigos:")
+print("""
+numeros = [1,2,3,4,5,6,7,8,9,10]
+
+print("Metodo 1: Bucle tradicional")
+pares = []
+for num in numeros:
+    if num % 2 == 0:
+        pares.append(num ** 2)
+print(f"Cuadrados de numeros pares: {pares}")
+
+print("\\nMetodo 2: Comprension de lista")
+pares = [num ** 2 for num in numeros if num % 2 == 0]
+print(f"Cuadrados de numeros pares: {pares}")
+""")
+
+mostrar_seccion("PREDICCION:")
+print("Ambos metodos daran el mismo resultado?")
+esperar_enter("Presiona Enter para ver el resultado...")
+
+print("\nRESULTADO:")
+numeros = [1,2,3,4,5,6,7,8,9,10]
+pares = [num ** 2 for num in numeros if num % 2 == 0]
+print(f"Cuadrados de numeros pares: {pares}")
+esperar_enter()
+
+# ===========================================================================
+# Cierre
+# ===========================================================================
+limpiar_pantalla()
+mostrar_titulo("CONCLUSION DE LA EXPLORACION INTERACTIVA")
+
+print("""
+Hemos explorado conceptos confusos sobre estructuras de control en Python:
+
+1. Modificacion de colecciones durante la iteracion
+2. Funcionamiento y parametros de range()
+3. Bucles infinitos y actualizacion de condiciones
+4. Diferencias entre break y continue
+5. Comportamiento de break en bucles anidados
+6. Comprensiones de lista vs bucles tradicionales
+""")
+
+esperar_enter("Presiona Enter para finalizar...")
+
+limpiar_pantalla()
+print("Gracias por participar en la exploracion de estructuras de control!")
+print("Continua con los ejercicios practicos.")
