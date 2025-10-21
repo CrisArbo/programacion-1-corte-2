@@ -1,0 +1,12 @@
+9780134685991|Effective Python|Brett Slatkin|2019|Programacion|5
+9780135404676|Python Crash Course|Eric Matthes|2019|Programacion|4
+9781449355739|Fluent Python|Luciano Ramalho|2015|Programacion|3
+9780262033848|Introduction to Algorithms|Cormen et al.|2009|Algoritmos|2
+9780131103627|The C Programming Language|Kernighan Ritchie|1988|Programacion|2
+9780201616224|The Pragmatic Programmer|Andrew Hunt|1999|Software|3
+9780262035613|Structure and Interpretation of Computer Programs|Abelson|1996|CS|1
+9781491957660|Designing Data-Intensive Applications|Martin Kleppmann|2017|Data|2
+9780132350884|Clean Code|Robert C. Martin|2008|Software|4
+9781491901427|Fluent Python (2nd)|Luciano Ramalho|2021|Programacion|2
+9780134093413|Computer Networks|Andrew S. Tanenbaum|2010|Redes|2
+9780137081073|Artificial Intelligence: A Modern Approach|Russell Norvig|2010|AI|2
